@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <style>
+    .b-example-divider {
+        width: 100%;
+        height: 3rem;
+        background-color: #0000001a;
+        border: solid rgba(0, 0, 0, 0.15);
+        border-width: 1px 0;
+        box-shadow:
+          inset 0 0.5em 1.5em #0000001a,
+          inset 0 0.125em 0.5em #00000026;
+      }
+      .bi {
+        vertical-align: -0.125em;
+        fill: currentColor;
+      }
+  </style>
+  </head>
+<body>
+  <svg>
+  <symbol id="x-lg" viewBox="0 0 16 16">
+        <path
+          fill-rule="evenodd"
+          d="M13.854 2.146a.5.5 0 0 1 0 .708l-11 11a.5.5 0 0 1-.708-.708l11-11a.5.5 0 0 1 .708 0Z"
+        ></path>
+        <path
+          fill-rule="evenodd"
+          d="M2.146 2.146a.5.5 0 0 0 0 .708l11 11a.5.5 0 0 0 .708-.708l-11-11a.5.5 0 0 0-.708 0Z"
+        ></path>
+      </symbol>
+      </svg>
+  <div class="d-flex gap-2 justify-content-center py-5"><!--여러 색깔의 버튼-->
+  <button class ="btn btn-primary rounded-fill px-3" tybe = "button"> primary </button>
+  <button class ="btn btn-secondary rounded-fill px-3" tybe = "button"> secondary </button>  
+  <button class ="btn btn-success rounded-fill px-3" tybe = "button"> secondary </button>
+  <button class ="btn btn-danger rounded-fill px-3" tybe = "button"> secondary </button>
+  <button class ="btn btn-warning rounded-fill px-3" tybe = "button"> secondary </button>
+  <button class ="btn btn-light rounded-fill px-3" tybe = "button"> secondary </button>
+  <button class ="btn btn-dark rounded-fill px-3" tybe = "button"> secondary </button>
+  <button class ="btn btn-link rounded-fill px-3" tybe = "button"> secondary </button>
+  </div>
+  <div class="b-example-divider"></div>
+  <div class="col=lg-6 col -xxl-4 my-5 mx-auto">
+    <div class="d-grid gap-2">
+    <button class ="btn btn-outline-secondary " tybe = "button"> secondary </button>
+    <button class ="btn btn-primary  " tybe = "button"> secondary </button>
+  </div>
+  </div>
+<div class="b-example-divider"></div>
+  <div class="d-flex gap-2 justify-content-center py-5">
+    <button  class ="btn btn-primary" type="button" disabled>
+      <span class="spinner-border spinrer-boader-sm"aria-hidden ="ture"></span>
+      <span class="visually-hidden"role="status">loding...</span>
+    </button>
+    <button class ="btn btn-primary" tybe = "button" disabled>
+      <span class="spinner-border spinrer-boader-sm"aria-hidden ="ture"></span>
+      <span role="status">loding...</span>
+    </button>
+  </div>
+<div class="b-example-divider"></div>
+  <div class="d-flex gap-2 justify-content-center py-5">
+    <button class="btn btn-primary rounded-circle p-2 lh-1" type="button">
+      <svg class="bi" width="16" height="16" aria-hidden="true">
+        <use href="#x-lg"></use>
+      </svg>  
+      <span class="visually-hidden">Dismiss</span>
+    </button>
+    <button class="btn btn-outline-primary rounded-circle p-2 lh-1" type="button">
+      <svg class="bi" width="16" height="16" aria-hidden="true">
+        <use href="#x-lg"></use>
+      </svg>  
+      <span class="visually-hidden">Dismiss</span>
+    </button>
+  </div>
+  <div class="d-flex gap-2 justify-content-center py-5">
+    <button class="btn btn-primary rounded-circle p-3 lh-1" type="button">
+      <svg class="bi" width="24" height="24" aria-hidden="true">
+         
+        <use href="#x-lg"></use>
+      </svg>  
+      <span class="visually-hidden">Dismiss</span>
+    </button>
+    <button class="btn btn-outline-primary rounded-circle p-3 lh-1" type="button">
+      <svg class="bi" width="24" height="24" aria-hidden="true">
+        <use href="#x-lg"></use>
+      </svg>  
+      <span class="visually-hidden">Dismiss</span>
+    </button>
+  </div>
+</body>
+</html>
