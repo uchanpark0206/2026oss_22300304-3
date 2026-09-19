@@ -1,13 +1,141 @@
-/*
-Page Layout
-Navigation
-Form
-Input
-Select
-Button
-Table / List
-Card
-Header / Foote
-*/
-header{class:"table-responsive"}
-footer{class:mt-4;}
+
+/* ----------------------------------------
+   1. Page Layout (페이지 뼈대)
+---------------------------------------- */
+/* 폰트와 배경색 기본값 설정 */
+body {
+    background-color: rgba(235, 192, 131, 0.6);
+    font-family: 'Malgun Gothic', sans-serif;
+    color: #765959;
+}
+
+/* 모든 페이지의 메인 콘텐츠 구역을 가운데 정렬하고 넓이 제한 */
+main {
+    max-width: 1000px;
+    margin: 2rem auto; /* 위아래 40px 여백, 좌우 중앙정렬 */
+    padding: 1rem;
+    background-color: rgb(247, 199, 96); /* 본문 영역만 하얗게 강조 */
+    border-radius: 1rem; /* 모서리 둥글게 */
+    box-shadow: 0 0.4rem 0.5rem ; /* 은은한 그림자 */
+}
+
+/* ----------------------------------------
+   2. Header / Footer 
+---------------------------------------- */
+header {
+    background-color: rgb(240, 78, 78); 
+    color: white;
+    padding: 1rem 0;
+    border-radius: 1rem;
+}
+
+footer {
+    display: flex;
+    gap:1rem;
+    text-align: center;
+    padding: 2rem;
+    margin: 3rem;
+    color: #6c757d;
+    font-size: 0.9rem;
+    border-top: 1px solid #dee2e6; /* 위쪽에 얇은 선 */
+}
+
+
+/* ----------------------------------------
+   3. Navigation (메뉴 링크)
+---------------------------------------- */
+nav a {
+    color: white;
+    text-decoration: none; /* 밑줄 제거 */
+    margin: 0 1rem; /* 링크 사이 여백 */
+    font-weight: bold;
+}
+nav a:hover {
+    color: #ffc107; /* 마우스 올리면 노란색으로 변경 */
+}
+
+/* ----------------------------------------
+   4. Form, Input, Select
+---------------------------------------- */
+/* 폼 안의 각 입력 묶음 여백 */
+form .mb-3 {
+    margin-bottom: 1rem; 
+}
+
+/* 입력 칸과 선택 상자의 공통 디자인 */
+input, select {
+    width: 100%; /* 가로로 꽉 차게 */
+    padding: 1rem;
+    border: 1px solid #ced4da;
+    border-radius: 5px; /* 둥근 모서리 */
+    transition: border-color 0.3s; /* 색상이 부드럽게 변함 */
+}
+
+/* 입력 칸에 클릭(포커스)했을 때의 테두리 강조 */
+input:focus, select:focus {
+    border-color: #0d6efd;
+    outline: none; /* 브라우저 기본 파란 테두리 제거 */
+    box-shadow: 0 0 5px rgba(13, 110, 253, 0.3);
+}
+
+/* ----------------------------------------
+   5. Button
+---------------------------------------- */
+/* 공통 버튼 디자인 (부트스트랩 버튼이 있어도 조금 더 예쁘게 다듬기) */
+button, .btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s; /* 마우스 올렸을 때 애니메이션 */
+}
+
+button:hover {
+    transform: translateY(-2px); /* 마우스 올리면 살짝 위로 떠오름 */
+}
+
+/* ----------------------------------------
+   6. Table / List
+---------------------------------------- */
+/* 표 공통 디자인 */
+table {
+    width: 100%;
+    border-collapse: collapse; /* 테두리 겹침 방지 */
+    margin-top: 1rem;
+}
+th, td {
+    padding: 15px;
+    border-bottom: 1px solid #dee2e6;
+    text-align: center;
+}
+th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+/* 표 줄에 마우스 올렸을 때 하이라이트 */
+tbody tr:hover {
+    background-color: #f1f3f5; 
+}
+
+/* ----------------------------------------
+   7. Card (상세 페이지용 네모 상자)
+---------------------------------------- */
+.book-card {
+    border: 1px solid #dee2e6;
+    border-radius: 10px;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: 0 0.4rem 0.5rem rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+@media (max-width: 768px) {
+    header {
+        font-size: 0.5rem; /* 모바일에서는 제목 크기를 확 줄임 */
+        color:white;        /* 폰 화면 크기 이하가 되면 빨간색으로 덮어씌움! */
+        background-color: #765959;
+    }
+    
+    table {
+        font-size: 0.8rem; /* 모바일에서는 표 글씨도 작게 줄임 */
+    }
+}

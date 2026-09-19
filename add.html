@@ -13,8 +13,8 @@
         <h2>도서 등록</h2>
         </header>
         <hr>
-        <!-- form 전송 시 validateForm() 자바스크립트 함수를 먼저 실행합니다. -->
-        <form onsubmit="return validateForm()" action="index.html">
+        <!-- form 전송 시 validateForm() 자바스크립트 함수를 먼저 실행 -->
+        <form onsubmit="return validateForm()" action="index.html">//버튼을 누르고 자바스크립트의 내용에서 트루가 나오면 인덱스.html로 돌아옴
             
             <div class="mb-3">
                 <label class="form-label">도서명 (필수)</label>
@@ -27,7 +27,7 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">출판수(필수)</label>
+                <label class="form-label">출판사(필수)</label>
                 <input type="text" id="bookPublisher" class="form-control" placeholder="출판사를 입력하세요">
             </div>
 
@@ -61,36 +61,41 @@
     <!-- 핵심! 자바스크립트 검증 로직 -->
     <script>
     function validateForm() {
-        const title = document.getElementById('bookTitle').value;
-        const author = document.getElementById('bookAuthor').value;
-        const publisher = document.getElementById('bookPublisher').value;
-        const year = document.getElementById('bookYear').value;
-        const isbn = document.getElementById('bookIsbn').value;
-        const category = document.getElementById('bookCategory').value;
+    const title = document.getElementById('bookTitle').value;
+    const author = document.getElementById('bookAuthor').value;
+    const publisher = document.getElementById('bookPublisher').value;
+    const year = document.getElementById('bookYear').value;
+    const isbn = document.getElementById('bookIsbn').value;
+    const category = document.getElementById('bookCategory').value;
 
-        // 1. 필수값 등 검증
-        if (title.trim() === "") { alert("도서명은 필수 입력 항목입니다."); return false; }
-        if (author.trim() === "") { alert("저자명은 필수 입력 항목입니다."); return false; }
-        if (year !== "" && (year < 1900 || year > 2024)) { alert("출판년도는 1900년에서 2024년 사이여야 합니다."); return false; }
-        if (isbn !== "" && isbn.length !== 13) { alert("ISBN은 정확히 13자리여야 합니다."); return false; }
-        if (category === "") { alert("카테고리를 선택해 주세요."); return false; }
+    // 1. 필수값 등 검증 (출판사 필수 검증 추가!)
+    if (title.trim() === "") { alert("도서명은 필수 입력 항목입니다."); return false; }
+    if (author.trim() === "") { alert("저자명은 필수 입력 항목입니다."); return false; }
+    if (publisher.trim() === "") { alert("출판사는 필수 입력 항목입니다."); return false; } // 추가된 부분
+    
+    if (year !== "" && (year < 1900 || year > 2024)) { alert("출판년도는 1900년에서 2024년 사이여야 합니다."); return false; }
+    if (isbn !== "" && isbn.length !== 13) { alert("ISBN은 정확히 13자리여야 합니다."); return false; }
+    if (category === "") { alert("카테고리를 선택해 주세요."); return false; }
 
-        // 2. 새 책 데이터 묶기 (모두 소문자로 통일!)
-        const newBook = {
-            id: Date.now(),
-            title: title,
-            author: author,
-            category: category
-        };
+    // 2. 새 책 데이터 묶기 
+    const newBook = {
+        id: Date.now(),
+        title: title,
+        author: author,
+        publisher: publisher, 
+        year: year,           
+        isbn: isbn,           
+        category: category
+    };
 
-        // 3. 'bookData'라는 새로운 이름의 깨끗한 메모장을 엽니다.
-        let books = JSON.parse(localStorage.getItem('bookData')) || [];
-        books.push(newBook);
-        localStorage.setItem('bookData', JSON.stringify(books));
+    // 3. 'bookData' 메모장에 저장
+    let books = JSON.parse(localStorage.getItem('bookData')) || [];
+    books.push(newBook);
+    localStorage.setItem('bookData', JSON.stringify(books));
 
-        alert("게시물이 성공적으로 추가됩니다!");
-        return true; 
-    }
+    alert("게시물이 성공적으로 추가되었습니다!");
+    return true; 
+}
 </script>
 </body>
 </html>

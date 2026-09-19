@@ -14,47 +14,6 @@
             <h2>📚 내 서재 관리 (도서 목록)</h2>
         
         </header>
-        <!--
-반응형 웹(rwd/responsive web)
-디스플레이의 크기에 따라 다르게 보이는 웹
- 구성요소
- 
- fluid grid
- 고정 픽셀대신 %나 fr단위 사용
-
- flexinle images
- 이미지가 부모요소
-
- *inline 과 block의 차이 이해할 것!!!
-
- media Queries
- 특정 조건에 따라 css 스타일 적용
-orientation
-min-width
-max-width
-hover,pointer
-(위치가 중요/모바일의 경우css의 가장 마지막에 적용해야함)
- 
- *rem단위 찾아보기!!!
-
- css framework
- 자주 사용하는 css스타일과 ui컴포넌트를 미리 정의한 도수
- 대표적
- bootstrap,tailwind,css bulma
- 
- bootstrap사용법
- 
- 1)cdn(content delivery network):풀주소를 가지고 와서 사용/소도 빠름
-
- 2)doenload
-
- 3)
-
- 절대패스/상대패스
- 절대패스(루트기준['/'=루트라고 부름]) 상대패스(지금 내 위치 기준[''..''=부모 '.'=현재])
- 
-
- -->
         <main class="table-responsive">
             <table class="table table-hover table-bordered text-center align-middle">
                 <thead class="table-light">
@@ -66,7 +25,7 @@ hover,pointer
                         <th>관리</th>
                     </tr>
                 </thead>
-                <!-- HTML에서는 안을 비워두고 id만 달아줍니다. -->
+                <!-- HTML에서는 안을 비워두고 id만 달아줌. -->
                 <tbody id="bookTableBody">
                 </tbody>
             </table>
@@ -79,7 +38,7 @@ hover,pointer
         </footer>
     </div>
 
-    <!-- 스크립트로 데이터와 표를 연결합니다 -->
+    <!-- 스크립트로 데이터와 표를 연결 -->
     <script>
     function reset_data(){
         localStorage.removeItem('bookData');
@@ -89,7 +48,7 @@ hover,pointer
 
 
 
-    // 1. 'bookData' 메모장이 비어있으면 깨끗한 샘플 데이터를 새로 넣습니다.
+    // 1. 'bookData' 메모장이 비어있으면 예시항목샘플 데이터를 새로 넣는다
     if (localStorage.getItem('bookData') === null) {
         const sampleData = [
             { id: 1, title: '해리포터와 마법사의 돌', author: '조앤 K. 롤링', category: '소설' },
@@ -98,7 +57,7 @@ hover,pointer
         localStorage.setItem('bookData', JSON.stringify(sampleData));
     }
 
-    // 2. 새로운 'bookData' 메모장에서 책 목록 불러오기
+    // 2. 새로운 'bookData' 소셜 스토리지 에서 책 목록 불러오기
     let books = JSON.parse(localStorage.getItem('bookData')) || [];
     const tbody = document.getElementById('bookTableBody');
 

@@ -26,6 +26,9 @@
                     <th>도서명</th>
                     <th>저자</th>
                     <th>카테고리</th>
+                    <th>출판사</th>
+                    <th>출판연도</th>
+                    <th>isb</th>
                     <th>편집</th>
                     <th>삭제</th>
                 </tr>
@@ -59,7 +62,9 @@
                     <td class="fw-bold text-primary">${targetBook.title}</td>
                     <td>${targetBook.author}</td>
                     <td>${targetBook.category}</td>
-                    <!-- 편집 버튼은 edit.html로 이동하도록 과제에 맞춰 수정했습니다 -->
+                    <td>${targetBook.publisher }</td>
+                    <td>${targetBook.year }</td>
+                    <td>${targetBook.isbn }</td>
                     <td><a href="edit.html?id=${targetBook.id}" class="btn btn-primary">편집</a></td>
                     <!-- 삭제 버튼은 클릭 시 deleteBook() 함수를 실행합니다 -->
                     <td><button type="button" class="btn btn-danger" onclick="deleteBook(${targetBook.id})">삭제</button></td>

@@ -11,10 +11,8 @@
     <div class="container mt-5">
         <h2>도서 수정</h2>
         <hr>
-        <!-- form 전송 시 validateAndUpdate() 함수를 먼저 실행합니다 -->
         <form onsubmit="return validateAndUpdate()" action="index.html">
             
-            <!-- 수정할 때 어떤 책인지 알아야 하므로 id를 몰래 숨겨둡니다 -->
             <input type="hidden" id="bookId">
 
             <div class="mb-3">
@@ -28,7 +26,8 @@
             </div>
 
             <div class="mb-3">
-                <label class="form-label">출판사</label>
+                <!-- 라벨에 필수 표시 추가 -->
+                <label class="form-label">출판사 (필수)</label>
                 <input type="text" id="editPublisher" class="form-control">
             </div>
 
@@ -49,85 +48,85 @@
                     <option value="소설">소설</option>
                     <option value="IT/프로그래밍">IT/프로그래밍</option>
                     <option value="에세이">에세이</option>
+                    <option value="자기계발">자기계발</option>
+                    <option value="인문/역사">인문/역사</option>
                 </select>
             </div>
 
             <div class="mt-4">
                 <button type="submit" class="btn btn-warning">수정</button>
-                <!-- 취소하면 다시 메인(또는 상세) 페이지로 돌아갑니다 -->
                 <a href="index.html" class="btn btn-secondary">취소</a>
             </div>
         </form>
     </div>
 
     <script>
-        // 1. 페이지가 켜지자마자 실행되는 부분: 기존 데이터 채워넣기
         const urlParams = new URLSearchParams(window.location.search);
         const urlId = urlParams.get('id');
 
         let books = JSON.parse(localStorage.getItem('bookData')) || [];
         const targetBook = books.find(book => book.id == urlId);
 
-        // 클릭한 책이 존재하면, 빈칸(.value)에 기존 글자들을 쏙쏙 넣어줍니다!
+        // 1. 기존 데이터 채워넣기 
         if (targetBook) {
             document.getElementById('bookId').value = targetBook.id;
             document.getElementById('editTitle').value = targetBook.title || "";
             document.getElementById('editAuthor').value = targetBook.author || "";
+            document.getElementById('editPublisher').value = targetBook.publisher || "";
+            document.getElementById('editYear').value = targetBook.year || "";           
+            document.getElementById('editIsbn').value = targetBook.isbn || "";           
             document.getElementById('editCategory').value = targetBook.category || "";
-            document.getElementById('bookPublisher').value = targetBook.Publisher || "";
-            document.getElementById('bookYear').value = targetBook.year || "";
-            document.getElementById('bookIsbn').value = targetBook.isbn || "";
-            // (참고: 추가할 때 출판사, 연도 등도 저장했다면 여기에 불러오면 됩니다)
         } else {
             alert("잘못된 접근입니다.");
-            window.location.href = "index.html"; // 책을 못 찾으면 쫓아냄
+            window.location.href = "index.html";
         }
 
         // 2. 수정완료 버튼을 눌렀을 때 실행되는 함수
         function validateAndUpdate() {
-            // 방금 화면에서 수정한 값들을 가져옵니다
             const updatedId = document.getElementById('bookId').value;
             const updatedTitle = document.getElementById('editTitle').value;
             const updatedAuthor = document.getElementById('editAuthor').value;
-            const updatedYear = document.getElementById('editYear').value;
-            const updatedIsbn = document.getElementById('editIsbn').value;
+            const updatedPublisher = document.getElementById('editPublisher').value; 
+            const updatedYear = document.getElementById('editYear').value;           
+            const updatedIsbn = document.getElementById('editIsbn').value;           
             const updatedCategory = document.getElementById('editCategory').value;
 
-            // 검증 1: 필수값
-            if (updatedTitle.trim() === "" || updatedAuthor.trim() === "") {
-                alert("도서명과 저자는 필수입니다.");
+            // 검증 1: 필수값 확인 
+            if (updatedTitle.trim() === "" || updatedAuthor.trim() === "" || updatedPublisher.trim() === "") {
+                alert("도서명, 저자, 출판사는 필수 입력 항목입니다.");
                 return false;
             }
+            
             // 검증 2: 카테고리
             if (updatedCategory === "") {
                 alert("카테고리를 선택해 주세요.");
                 return false;
             }
 
-            // 과제 필수 조건: 수정할지 확인하는 confirm!
             if (!confirm("게시물을 수정할까요?")) {
-                return false; // 취소를 누르면 여기서 멈춤 (제출 안 됨)
+                return false; 
             }
 
-            // 전체 책 목록을 돌면서, 내가 수정 중인 책 번호와 같은 녀석을 찾아 데이터를 덮어씌웁니다.
+            // 3. 전체 목록 돌면서 데이터 업데이트 
             books = books.map(book => {
                 if (book.id == updatedId) {
                     return {
                         id: book.id,
                         title: updatedTitle,
                         author: updatedAuthor,
+                        publisher: updatedPublisher, 
+                        year: updatedYear,           
+                        isbn: updatedIsbn,           
                         category: updatedCategory
-                        // 필요하다면 출판사, 연도 데이터도 여기에 추가
                     };
                 }
-                return book; // 다른 책들은 그대로 둔다
+                return book; 
             });
 
-            // 변경된 전체 목록을 다시 메모장(로컬 스토리지)에 저장
             localStorage.setItem('bookData', JSON.stringify(books));
             
-            alert("수정되었습니다!");
-            return true; // 폼이 제출되면서 index.html로 이동!
+            alert("성공적으로 수정되었습니다!");
+            return true;
         }
     </script>
 </body>
